@@ -5,7 +5,7 @@ cmd:
       --dataset datasets/my_dataset.csv \
       --epochs 100
     echo "training completed"
-    python3 evaluate.py \
+    python3 test.py \
       --dataset datasets/local_test_dataset.csv
 description: my complex preset
 
