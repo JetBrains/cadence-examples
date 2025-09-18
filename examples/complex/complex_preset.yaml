@@ -1,0 +1,56 @@
+working_dir: .
+cmd:
+  - |-
+    python3 train.py \
+      --dataset datasets/my_dataset.csv \
+      --epochs 100
+    echo "training completed"
+    python3 evaluate.py \
+      --dataset datasets/local_test_dataset.csv
+description: my complex preset
+
+provisioning:
+  gpu_type: H200
+  gpu_count: 1
+  cpu_count: 16
+  ram: 200
+
+env:
+  variables:
+    PYTHONUNBUFFERED: "1"
+  python:
+    version: 3.11
+    poetry:
+      directory: .
+  secrets:
+    variables:
+      API_KEY: { oc.env:API_KEY }
+
+project_sync:
+  local:
+    root: .
+    storage_name: my-custom-storage
+    uri: "path/on/the/bucket/snapshot"
+    exclude: [ "dir/to/exclude/**" ]
+    include: [ "dir/to/exclude/include_anyway.txt" ]
+    storage_type: CUSTOM
+
+inputs:
+  - type: INPUT
+    storage_name: my-custom-storage
+    uri: "path/on/the/bucket/dataset.csv"
+    path: "datasets/my_dataset.csv" # `dataset.csv` will be downloaded from S3 on the remote machine as `my_dataset.csv`
+    storage_type: CUSTOM
+
+outputs:
+  - type: OUTPUT
+    storage_name: my-custom-storage
+    uri: "path/on/the/bucket/"
+    path: outputs # e.g., `./outputs/file1.txt` will be saved to s3://my-bucket/path/on/the/bucket/file1.txt
+    storage_type: CUSTOM
+  - type: OUTPUT
+    storage_name: Cadence Storage
+    uri: ""
+    path: outputs2
+    exclude: [ "some_file.txt" ]
+    storage_type: DEFAULT
