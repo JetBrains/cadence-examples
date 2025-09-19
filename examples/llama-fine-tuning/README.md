@@ -22,4 +22,4 @@ Navigate to the `llama-fine-tuning` directory and run the following command:
 cadence execution start --preset llama-fine-tuning.yaml
 ```
 
-This will provision the required resources (H100 GPU), set up the environment, and execute the fine-tuning script.
+This will provision the required resources (H200 GPU), set up the environment, and execute the fine-tuning script.

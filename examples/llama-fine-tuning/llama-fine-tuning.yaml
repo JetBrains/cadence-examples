@@ -4,10 +4,10 @@ cmd:
 description: ""
 
 provisioning:
-  gpu_type: h100
+  gpu_type: h200
   gpu_count: 1
-  cpu_count: 20
-  ram: 160
+  cpu_count: 16
+  ram: 200
 
 env:
   variables:
