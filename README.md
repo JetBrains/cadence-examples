@@ -62,10 +62,9 @@ outputs:
     storage_type: string  # DEFAULT or CUSTOM.
 ```
 ## Examples
-See [basic example](examples/basic/basic_preset.yaml).
-Only uses default storage.
-
-See [complex example](examples/complex/complex_preset.yaml)
+- [Basic example](examples/basic) - Simple example that only uses default storage.
+- [Llama fine-tuning example](examples/llama-fine-tuning) - Example demonstrating how to fine-tune the Mistral-7B language model using LoRA.
+- [Complex example](examples/complex) - Advanced example with custom storage and more complex configuration.
 
 ## Custom storage
 
@@ -110,6 +109,3 @@ Storage my-custom-storage added to keyring
 ```shell
 cadence storage list
 ```
-
-
-

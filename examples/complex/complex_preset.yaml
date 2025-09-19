@@ -24,7 +24,7 @@ env:
       directory: .
   secrets:
     variables:
-      API_KEY: { oc.env:API_KEY }
+      API_KEY: ${oc.env:API_KEY}
 
 project_sync:
   local:
