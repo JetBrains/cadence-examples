@@ -1,6 +1,7 @@
 # Cadence CLI
 
 ## Install
+
 ```shell
 pip install jetbrains-cadence
 ```
@@ -12,38 +13,56 @@ This will create a `cadence` script in your current environment.
 ```shell
 cadence login
 ```
-If you want to use Cadence CLI in the non-interactive environment, you can [create the token manually](https://api.cadence.jetbrains.com/app/jettrain/token.html) and pass it via `CADENCE_TOKEN` environment variable
 
+If you want to use Cadence CLI in the non-interactive environment, you
+can [create the token manually](https://api.cadence.jetbrains.com/app/jettrain/token.html) and pass it via
+`CADENCE_TOKEN` environment variable
 
-#### Start the execution from YAML config
+### Start the execution from YAML config
+Start the execution with:
 ```shell
 cadence execution start --preset path/to/config.yaml
 ```
+
 This will print the ID of the started execution.
 
+Config file format is described [here](#config-file-format).
+
+### Examples
+
+- [Basic example](examples/basic) - Simple example that only uses default storage.
+- [Llama fine-tuning example](examples/llama-fine-tuning) - Example demonstrating how to fine-tune the Mistral-7B
+  language model using LoRA.
+- [Complex example](examples/complex) - Advanced example with custom storage and more complex configuration.
+
+## Available Commands
 
 #### See the execution status
+
 ```shell
 cadence execution status <YOUR-EXECUTION-ID>
 ```
 
 #### Stop the execution
+
 ```shell
 cadence execution stop <YOUR-EXECUTION-ID>
 ```
 
-## More commands
-
 #### Get information about the execution as a JSON
+
 ```shell
 cadence execution info <YOUR-EXECUTION-ID>
 ```
 
 #### List executions
+
 ```shell
 cadence execution list
 ```
+
 Options:
+
 ```
   --offset INTEGER  [default: 0]
   --count INTEGER   [default: 50]
@@ -52,50 +71,56 @@ Options:
 ```
 
 #### View execution logs
+
 ```shell
 cadence execution logs <YOUR-EXECUTION-ID>
 ```
 
-
 #### Open terminal
+
 ```shell
 cadence execution terminal <YOUR-EXECUTION-ID>
 ```
 
 #### Download data
+
 ```shell
 cadence execution download <YOUR-EXECUTION-ID>
 ```
+
 Options:
+
 ```
   --to DIRECTORY  [required]
   --inputs        Include inputs
   --no-outputs    Exclude outputs
 ```
 
-## Workspace management
+### Workspace management
+
 #### Display information about the current workspace:
+
 ```shell
 cadence workspace
 ```
 
 #### See available workspaces:
+
 ```shell
 cadence workspace list
 ```
 
 #### Set workspace:
+
 ```shell
 cadence workspace set <YOUR-WORKSPACE-ID>
 ```
-
-
 
 ## Config file format:
 
 ```yaml
 working_dir: string       # Required.
-cmd:                      # Commands to run in sequence. Required.
+cmd: # Commands to run in sequence. Required.
   - string
 description: string
 
@@ -114,7 +139,7 @@ provisioning:
 env:
   variables: Map          # Key-value pairs of environment variables.
   docker_image: string
-  python:                 # Python-specific configuration.
+  python: # Python-specific configuration.
     version: string
     pip:
       requirements_path: '<path-to-requirements.txt>'
@@ -154,14 +179,21 @@ outputs:
     path: string          # Target path relative to the project root on a remote machine (e.g., folder/data)
     storage_type: string  # DEFAULT or CUSTOM.
 ```
-## Examples
-- [Basic example](examples/basic) - Simple example that only uses default storage.
-- [Llama fine-tuning example](examples/llama-fine-tuning) - Example demonstrating how to fine-tune the Mistral-7B language model using LoRA.
-- [Complex example](examples/complex) - Advanced example with custom storage and more complex configuration.
+
+## Default storage
+
+JetBrains Cadence has a built-in Cadence Storage that you can use as a default option.
+
+Cadence Storage is an internal S3-based storage system managed by JetBrains Cadence. This storage solution ensures that
+data is securely isolated, meaning that only the users with authorized access to the specific workspace can access the
+data. This security mechanism guarantees that each workspace's data remains private and protected from unauthorized
+access, maintaining the integrity and confidentiality of the stored information.
 
 ## Custom storage
 
 ### Add storage
+
+You can also use your custom S3 bucket storage. To do this, you need to add a new storage via:
 
 ```shell
 cadence storage add
@@ -203,22 +235,30 @@ Storage my-custom-storage added to keyring
 cadence storage list
 ```
 
-
 ## Completions
-cadence CLI uses click for its command line interface. click can automatically generate completion files for bash, fish, and zsh which can either be generated and sourced each time your shell is started or, generated once, save to a file and sourced from there. The latter version is much more efficient.
+
+Cadence CLI uses click for its command line interface. click can automatically generate completion files for bash, fish,
+and zsh which can either be generated and sourced each time your shell is started or, generated once, save to a file and
+sourced from there. The latter version is much more efficient.
 
 To enable shell completions:
+
 ### bash
+
 ```bash
 echo 'eval "$(_CADENCE_COMPLETE=bash_source cadence)"' >> ~/.bashrc
 ```
+
 ### zsh
+
 ```zsh
 echo 'eval "$(_CADENCE_COMPLETE=zsh_source cadence)"' >> ~/.zshrc
 ```
 
 ### fish
+
 ```shell
 echo 'eval (env _KHAL_COMPLETE=fish_source khal)"' >> ~/.config/fish/completions/khal.fish
 ```
+
 ---
