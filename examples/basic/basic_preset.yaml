@@ -1,34 +1,33 @@
 working_dir: .
 cmd:
- - python3 main.py
+  - python3 main.py
 description: basic preset
 
 
 provisioning:
- gpu_type: H200
- gpu_count: 1
- cpu_count: 16
- ram: 200
+  gpu_count: 0
+  cpu_count: 2
+  ram: 4
 
 
 env:
- python:
-   version: 3.11
-   pip:
-     requirements_path: requirements.txt
+  python:
+    version: 3.11
+    pip:
+      requirements_path: requirements.txt
 
 
 project_sync:
- local:
-   root: .
-   storage_name: Cadence Storage
-   uri: ""
-   storage_type: DEFAULT
+  local:
+    root: .
+    storage_name: Cadence Storage
+    uri: ""
+    storage_type: DEFAULT
 
 
 outputs:
- - type: OUTPUT
-   storage_name: Cadence Storage
-   uri: ""
-   path: outputs # `./outputs` will be saved to S3
-   storage_type: DEFAULT
+  - type: OUTPUT
+    storage_name: Cadence Storage
+    uri: ""
+    path: outputs # `./outputs` will be saved to S3
+    storage_type: DEFAULT

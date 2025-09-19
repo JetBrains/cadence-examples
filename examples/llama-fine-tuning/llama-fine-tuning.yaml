@@ -1,0 +1,39 @@
+working_dir: "."
+cmd:
+- python main.py
+description: ""
+
+provisioning:
+  gpu_type: h100
+  gpu_count: 1
+  cpu_count: 20
+  ram: 160
+
+env:
+  variables:
+    PYTHONUNBUFFERED: "1"
+  python:
+    pip:
+      requirements_path: requirements.txt
+    version: 3.12.7
+  secrets:
+    variables:
+      HF_TOKEN: ${oc.env:HF_TOKEN}
+
+project_sync:
+  local:
+    root: "."
+    storage_name: Cadence Storage
+    uri: ""
+    include: []
+    storage_type: DEFAULT
+
+inputs: []
+
+outputs:
+- type: OUTPUT
+  storage_name: Cadence Storage
+  uri: ""
+  path: outputs
+  acceleration: false
+  storage_type: DEFAULT
