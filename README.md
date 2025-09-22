@@ -198,6 +198,7 @@ outputs:
 | -        |    0 | AWS      |       16 |     4 |         $0.17 | <pre>provisioning:<br>  gpu_count: 0<br>  cpu_count: 4<br>  ram: 16</pre>                            |
 | -        |    0 | AWS      |       96 |    48 |         $1.84 | <pre>provisioning:<br>  gpu_count: 0<br>  cpu_count: 48<br>  ram: 96</pre>                           |
 | -        |    0 | AWS      |     1536 |   192 |        $12.18 | <pre>provisioning:<br>  gpu_count: 0<br>  cpu_count: 192<br>  ram: 1536</pre>                        |
+
 \* Compute billed by the minute.\
 By using cloud resources of a certain provider, you are agreeing to their terms of service
 - [AWS Service Terms](https://aws.amazon.com/service-terms/)
