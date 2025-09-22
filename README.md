@@ -125,9 +125,8 @@ cmd: # Commands to run in sequence. Required.
 description: string
 
 
-# Provisioning configuration Required.
-# Must be one of the available resources,
-# see https://plugins.jetbrains.com/plugin/23731-jetbrains-cadence/docs/resources.html
+# Provisioning configuration. Required.
+# Must be one of the available resources.
 provisioning:
   gpu_type: string | null # Required.
   gpu_count: int | null   # Required.
