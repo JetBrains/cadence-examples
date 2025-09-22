@@ -24,9 +24,9 @@ Start the execution with:
 cadence execution start --preset path/to/config.yaml
 ```
 
-This will print the ID of the started execution.
-
-Config file format is described [here](#config-file-format).
+This will print the ID of the started execution.\
+Config file format is described [here](#config-file-format).\
+Available cloud resources are described [here](#resources).
 
 ### Examples
 
@@ -34,25 +34,6 @@ Config file format is described [here](#config-file-format).
 - [Llama fine-tuning example](examples/llama-fine-tuning) - Example demonstrating how to fine-tune the Mistral-7B
   language model using LoRA.
 - [Complex example](examples/complex) - Advanced example with custom storage and more complex configuration.
-
-## Resources
-| GPU Type | GPUs | Provider | vRAM, GB | vCPUs | Hourly price* | Config Snippet                                                                                       |
-|----------|-----:|----------|---------:|------:|--------------:|------------------------------------------------------------------------------------------------------|
-| h200     |    1 | Nebius   |      200 |    16 |         $3.50 | <pre>provisioning:<br>  gpu_type: h200<br>  gpu_count: 1<br>  cpu_count: 16<br>  ram: 200</pre>      |
-| h200     |    8 | Nebius   |     1600 |   128 |        $28.00 | <pre>provisioning:<br>  gpu_type: h200<br>  gpu_count: 8<br>  cpu_count: 128<br>  ram: 1600</pre>    |
-| h100     |    1 | Nebius   |      160 |    20 |         $2.95 | <pre>provisioning:<br>  gpu_type: h100<br>  gpu_count: 1<br>  cpu_count: 20<br>  ram: 160</pre>      |
-| h100     |    8 | Nebius   |     1280 |   160 |        $23.60 | <pre>provisioning:<br>  gpu_type: h100<br>  gpu_count: 8<br>  cpu_count: 160<br>  ram: 1280</pre>    |
-| l40s     |    1 | Nebius   |       32 |     8 |         $1.55 | <pre>provisioning:<br>  gpu_type: l40s<br>  gpu_count: 1<br>  cpu_count: 8<br>  ram: 32</pre>        |
-| a100-40g |    8 | AWS      |     1152 |    96 |        $32.77 | <pre>provisioning:<br>  gpu_type: a100-40g<br>  gpu_count: 8<br>  cpu_count: 96<br>  ram: 1152</pre> |
-| a10g     |    1 | AWS      |      128 |    32 |         $2.45 | <pre>provisioning:<br>  gpu_type: a10g<br>  gpu_count: 1<br>  cpu_count: 32<br>  ram: 128</pre>      |
-| a10g     |    4 | AWS      |      192 |    48 |         $5.67 | <pre>provisioning:<br>  gpu_type: a10g<br>  gpu_count: 4<br>  cpu_count: 48<br>  ram: 192</pre>      |
-| a10g     |    8 | AWS      |      768 |   192 |        $16.29 | <pre>provisioning:<br>  gpu_type: a10g<br>  gpu_count: 8<br>  cpu_count: 192<br>  ram: 768</pre>     |
-| t4       |    1 | AWS      |       64 |    16 |         $1.20 | <pre>provisioning:<br>  gpu_type: t4<br>  gpu_count: 1<br>  cpu_count: 16<br>  ram: 64</pre>         |
-| t4       |    1 | AWS      |       16 |     4 |         $0.53 | <pre>provisioning:<br>  gpu_type: t4<br>  gpu_count: 1<br>  cpu_count: 4<br>  ram: 16</pre>          |
-| -        |    0 | AWS      |        4 |     2 |         $0.05 | <pre>provisioning:<br>  gpu_count: 0<br>  cpu_count: 2<br>  ram: 4</pre>                             |
-| -        |    0 | AWS      |       16 |     4 |         $0.17 | <pre>provisioning:<br>  gpu_count: 0<br>  cpu_count: 4<br>  ram: 16</pre>                            |
-| -        |    0 | AWS      |       96 |    48 |         $1.84 | <pre>provisioning:<br>  gpu_count: 0<br>  cpu_count: 48<br>  ram: 96</pre>                           |
-| -        |    0 | AWS      |     1536 |   192 |        $12.18 | <pre>provisioning:<br>  gpu_count: 0<br>  cpu_count: 192<br>  ram: 1536</pre>                        |
 
 ## Available Commands
 
@@ -198,6 +179,26 @@ outputs:
     path: string          # Target path relative to the project root on a remote machine (e.g., folder/data)
     storage_type: string  # DEFAULT or CUSTOM.
 ```
+
+## Resources
+| GPU Type | GPUs | Provider | vRAM, GB | vCPUs | Hourly price* | Config Snippet                                                                                       |
+|----------|-----:|----------|---------:|------:|--------------:|------------------------------------------------------------------------------------------------------|
+| h200     |    1 | Nebius   |      200 |    16 |         $3.50 | <pre>provisioning:<br>  gpu_type: h200<br>  gpu_count: 1<br>  cpu_count: 16<br>  ram: 200</pre>      |
+| h200     |    8 | Nebius   |     1600 |   128 |        $28.00 | <pre>provisioning:<br>  gpu_type: h200<br>  gpu_count: 8<br>  cpu_count: 128<br>  ram: 1600</pre>    |
+| h100     |    1 | Nebius   |      160 |    20 |         $2.95 | <pre>provisioning:<br>  gpu_type: h100<br>  gpu_count: 1<br>  cpu_count: 20<br>  ram: 160</pre>      |
+| h100     |    8 | Nebius   |     1280 |   160 |        $23.60 | <pre>provisioning:<br>  gpu_type: h100<br>  gpu_count: 8<br>  cpu_count: 160<br>  ram: 1280</pre>    |
+| l40s     |    1 | Nebius   |       32 |     8 |         $1.55 | <pre>provisioning:<br>  gpu_type: l40s<br>  gpu_count: 1<br>  cpu_count: 8<br>  ram: 32</pre>        |
+| a100-40g |    8 | AWS      |     1152 |    96 |        $32.77 | <pre>provisioning:<br>  gpu_type: a100-40g<br>  gpu_count: 8<br>  cpu_count: 96<br>  ram: 1152</pre> |
+| a10g     |    1 | AWS      |      128 |    32 |         $2.45 | <pre>provisioning:<br>  gpu_type: a10g<br>  gpu_count: 1<br>  cpu_count: 32<br>  ram: 128</pre>      |
+| a10g     |    4 | AWS      |      192 |    48 |         $5.67 | <pre>provisioning:<br>  gpu_type: a10g<br>  gpu_count: 4<br>  cpu_count: 48<br>  ram: 192</pre>      |
+| a10g     |    8 | AWS      |      768 |   192 |        $16.29 | <pre>provisioning:<br>  gpu_type: a10g<br>  gpu_count: 8<br>  cpu_count: 192<br>  ram: 768</pre>     |
+| t4       |    1 | AWS      |       64 |    16 |         $1.20 | <pre>provisioning:<br>  gpu_type: t4<br>  gpu_count: 1<br>  cpu_count: 16<br>  ram: 64</pre>         |
+| t4       |    1 | AWS      |       16 |     4 |         $0.53 | <pre>provisioning:<br>  gpu_type: t4<br>  gpu_count: 1<br>  cpu_count: 4<br>  ram: 16</pre>          |
+| -        |    0 | AWS      |        4 |     2 |         $0.05 | <pre>provisioning:<br>  gpu_count: 0<br>  cpu_count: 2<br>  ram: 4</pre>                             |
+| -        |    0 | AWS      |       16 |     4 |         $0.17 | <pre>provisioning:<br>  gpu_count: 0<br>  cpu_count: 4<br>  ram: 16</pre>                            |
+| -        |    0 | AWS      |       96 |    48 |         $1.84 | <pre>provisioning:<br>  gpu_count: 0<br>  cpu_count: 48<br>  ram: 96</pre>                           |
+| -        |    0 | AWS      |     1536 |   192 |        $12.18 | <pre>provisioning:<br>  gpu_count: 0<br>  cpu_count: 192<br>  ram: 1536</pre>                        |
+
 
 ## Default storage
 
